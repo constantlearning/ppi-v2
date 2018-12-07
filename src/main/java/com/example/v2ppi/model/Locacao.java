@@ -1,11 +1,7 @@
 package com.example.v2ppi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,24 +12,19 @@ public class Locacao implements Serializable {
     private Long id;
 
     @ManyToOne
-    private Veiculo vehicle;
+    private Veiculo veiculo;
 
     @ManyToOne
-    @JsonIgnoreProperties("locacoes")
     private Pessoa pessoa;
 
-    @ManyToMany
-    @JsonIgnoreProperties("locacoes")
-    private List<Avaria> avarias;
-
-    public Locacao(Veiculo vehicle, Pessoa pessoa, List<Avaria> avarias) {
-        this.vehicle = vehicle;
-        this.pessoa = pessoa;
-        this.avarias = avarias;
+    public Locacao() {
+        pessoa = new Pessoa();
+        veiculo = new Veiculo();
     }
 
-    public Locacao() {
-        avarias = new ArrayList<>();
+    public Locacao(Veiculo veiculo, Pessoa pessoa) {
+        this.veiculo = veiculo;
+        this.pessoa = pessoa;
     }
 
     public Long getId() {
@@ -44,12 +35,12 @@ public class Locacao implements Serializable {
         this.id = id;
     }
 
-    public Veiculo getVehicle() {
-        return vehicle;
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
-    public void setVehicle(Veiculo vehicle) {
-        this.vehicle = vehicle;
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
     public Pessoa getPessoa() {
@@ -60,38 +51,27 @@ public class Locacao implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public List<Avaria> getAvarias() {
-        return avarias;
-    }
-
-    public void setAvarias(List<Avaria> avarias) {
-        this.avarias = avarias;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Locacao locacao = (Locacao) o;
         return Objects.equals(id, locacao.id) &&
-                Objects.equals(vehicle, locacao.vehicle) &&
-                Objects.equals(pessoa, locacao.pessoa) &&
-                Objects.equals(avarias, locacao.avarias);
+                Objects.equals(veiculo, locacao.veiculo) &&
+                Objects.equals(pessoa, locacao.pessoa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, vehicle, pessoa, avarias);
+        return Objects.hash(id, veiculo, pessoa);
     }
 
     @Override
     public String toString() {
         return "Locacao{" +
                 "id=" + id +
-                ", vehicle=" + vehicle +
+                ", veiculo=" + veiculo +
                 ", pessoa=" + pessoa +
-                ", avarias=" + avarias +
                 '}';
     }
-
 }

@@ -1,11 +1,9 @@
 
 package com.example.v2ppi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -20,6 +18,19 @@ public class Pessoa implements Serializable {
     private String nome;
     private String cpf;
     private String telefone;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Locacao> locacoes;
+
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, String cpf, String telefone, List<Locacao> locacoes) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.locacoes = locacoes;
+    }
 
     public Long getId() {
         return id;
@@ -53,6 +64,13 @@ public class Pessoa implements Serializable {
         this.telefone = telefone;
     }
 
+    public List<Locacao> getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(List<Locacao> locacoes) {
+        this.locacoes = locacoes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -62,12 +80,13 @@ public class Pessoa implements Serializable {
         return Objects.equals(id, pessoa.id) &&
                 Objects.equals(nome, pessoa.nome) &&
                 Objects.equals(cpf, pessoa.cpf) &&
-                Objects.equals(telefone, pessoa.telefone);
+                Objects.equals(telefone, pessoa.telefone) &&
+                Objects.equals(locacoes, pessoa.locacoes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cpf, telefone);
+        return Objects.hash(id, nome, cpf, telefone, locacoes);
     }
 
     @Override
@@ -77,6 +96,7 @@ public class Pessoa implements Serializable {
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", telefone='" + telefone + '\'' +
+                ", locacoes=" + locacoes +
                 '}';
     }
 }

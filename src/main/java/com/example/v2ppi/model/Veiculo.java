@@ -1,8 +1,11 @@
 
 package com.example.v2ppi.model;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +23,13 @@ public class Veiculo implements Serializable {
 
     @ManyToOne
     private Categoria categoria;
+
+    @OneToMany(mappedBy = "pessoa")
+    private List<Locacao> locacoes;
+
+    public Veiculo() {
+        categoria = new Categoria();
+    }
 
     public Long getId() {
         return id;
@@ -53,9 +63,12 @@ public class Veiculo implements Serializable {
         this.categoria = categoria;
     }
 
+    public List<Locacao> getLocacoes() {
+        return locacoes;
+    }
 
-    public Veiculo() {
-        categoria = new Categoria();
+    public void setLocacoes(List<Locacao> locacoes) {
+        this.locacoes = locacoes;
     }
 
     @Override
@@ -66,12 +79,13 @@ public class Veiculo implements Serializable {
         return Objects.equals(id, veiculo.id) &&
                 Objects.equals(marca, veiculo.marca) &&
                 Objects.equals(modelo, veiculo.modelo) &&
-                Objects.equals(categoria, veiculo.categoria);
+                Objects.equals(categoria, veiculo.categoria) &&
+                Objects.equals(locacoes, veiculo.locacoes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, marca, modelo, categoria);
+        return Objects.hash(id, marca, modelo, categoria, locacoes);
     }
 
     @Override
@@ -81,6 +95,7 @@ public class Veiculo implements Serializable {
                 ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", categoria=" + categoria +
+                ", locacoes=" + locacoes +
                 '}';
     }
 }

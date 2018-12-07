@@ -13,10 +13,9 @@
 <body>
 
 <header th:insert="fragments/header.html :: header"></header>
-
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong>Locações</strong>
+        <strong>Veículos</strong>
     </div>
     <div class="panel-body">
         <div class="table-responsive">
@@ -24,18 +23,33 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Veículo</th>
                     <th>Pessoa</th>
-                    <th>Avarias</th>
+                    <th>Veículo</th>
+                    <th></th>
                 </tr>
                 </thead>
+                <tbody>
+                <tr th:each="locacao : ${locacoes}">
+                    <td th:text="${locacao.id}"></td>
+                    <td th:text="${locacao.pessoa}"></td>
+                    <td th:text="${locacao.veiculo}"></td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <a class="btn btn-sm btn-primary"
+                               th:href="@{/locacoes/edit/{id}(id=${locacao.id})}">Editar</a>
+                            <a class="delete btn btn-sm btn-danger"
+                               th:href="@{/locacoes/delete/{id}(id=${locacao.id})}">Excluir</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
             </table>
         </div>
     </div>
-
     <div class="panel-footer">
         <a class="btn btn-sm btn-success" th:href="@{/locacoes/add}">Adicionar</a>
     </div>
+</div>
 
     <div th:replace="fragments/general.html :: footer"></div>
 </div>
