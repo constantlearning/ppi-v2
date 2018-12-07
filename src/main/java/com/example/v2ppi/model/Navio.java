@@ -18,12 +18,18 @@ public class Navio implements Serializable {
 
     private Integer quantidade;
 
-    public Navio(String nome, Integer quantidade) {
-        this.nome = nome;
-        this.quantidade = quantidade;
-    }
+    private Double tamanho;
+
+    private String nacionalidade;
 
     public Navio() {
+    }
+
+    public Navio(String nome, Integer quantidade, Double tamanho, String nacionalidade) {
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.tamanho = tamanho;
+        this.nacionalidade = nacionalidade;
     }
 
     public Long getId() {
@@ -50,6 +56,22 @@ public class Navio implements Serializable {
         this.quantidade = quantidade;
     }
 
+    public Double getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(Double tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,12 +79,14 @@ public class Navio implements Serializable {
         final Navio navio = (Navio) o;
         return Objects.equals(id, navio.id) &&
                 Objects.equals(nome, navio.nome) &&
-                Objects.equals(quantidade, navio.quantidade);
+                Objects.equals(quantidade, navio.quantidade) &&
+                Objects.equals(tamanho, navio.tamanho) &&
+                Objects.equals(nacionalidade, navio.nacionalidade);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, quantidade);
+        return Objects.hash(id, nome, quantidade, tamanho, nacionalidade);
     }
 
     @Override
@@ -71,6 +95,8 @@ public class Navio implements Serializable {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", quantidade=" + quantidade +
+                ", tamanho=" + tamanho +
+                ", nacionalidade='" + nacionalidade + '\'' +
                 '}';
     }
 }
