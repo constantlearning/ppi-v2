@@ -93,14 +93,14 @@ public class Pessoa implements Serializable {
         return Objects.hash(id, nome, cpf, telefone, locacoes);
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", locacoes=" + locacoes +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Pessoa{" +
+//                "id=" + id +
+//                ", nome='" + nome + '\'' +
+//                ", cpf='" + cpf + '\'' +
+//                ", telefone='" + telefone + '\'' +
+//                ", locacoes=" + locacoes +
+//                '}';
+//    }
 }

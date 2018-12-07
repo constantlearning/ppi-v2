@@ -71,12 +71,12 @@ public class Locacao implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        return "Locacao{" +
-                "id=" + id +
-                ", veiculo=" + veiculo +
-                ", pessoa=" + pessoa +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Locacao{" +
+//                "id=" + id +
+//                ", veiculo=" + veiculo +
+//                ", pessoa=" + pessoa +
+//                '}';
+//    }
 }
