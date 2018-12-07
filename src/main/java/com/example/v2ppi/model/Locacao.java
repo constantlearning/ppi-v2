@@ -1,10 +1,14 @@
 package com.example.v2ppi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Locacao implements Serializable {
 
     @Id
@@ -65,6 +69,7 @@ public class Locacao implements Serializable {
     public int hashCode() {
         return Objects.hash(id, veiculo, pessoa);
     }
+
 
     @Override
     public String toString() {

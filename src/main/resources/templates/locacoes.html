@@ -31,8 +31,8 @@
                 <tbody>
                 <tr th:each="locacao : ${locacoes}">
                     <td th:text="${locacao.id}"></td>
-                    <td th:text="${locacao.pessoa}"></td>
-                    <td th:text="${locacao.veiculo}"></td>
+                    <td th:text="${locacao.pessoa.nome}"></td>
+                    <td th:text="${locacao.veiculo.modelo}"></td>
                     <td>
                         <div class="btn-group pull-right">
                             <a class="btn btn-sm btn-primary"

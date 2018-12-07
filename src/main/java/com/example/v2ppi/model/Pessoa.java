@@ -1,6 +1,9 @@
 
 package com.example.v2ppi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -8,6 +11,7 @@ import java.util.Objects;
 
 
 @Entity
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
