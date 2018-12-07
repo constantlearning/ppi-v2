@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta nome="viewport" content="width=device-width"/>
+    <title>PPT-1 - Hello</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Thymeleaf Fragments: home</title>
+    <th:block th:include="fragments/general.html :: headerfiles"></th:block>
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+<h2><p style="padding-top: 5%" th:text="'Olá ' + ${nome} + '!'"/></h2>
+<div th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

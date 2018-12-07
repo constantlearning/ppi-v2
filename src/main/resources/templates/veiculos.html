@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta nome="viewport" content="width=device-width"/>
+    <title>PPT-1 - veiculos</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Thymeleaf Fragments: home</title>
+    <th:block th:include="fragments/general.html :: headerfiles"></th:block>
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Veículos</strong>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Categoria</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="veiculo : ${veiculos}">
+                    <td th:text="${veiculo.id}"></td>
+                    <td th:text="${veiculo.marca}"></td>
+                    <td th:text="${veiculo.modelo}"></td>
+                    <td th:text="${veiculo.categoria}"></td>
+                    <td>
+                        <div class="btn-group pull-right">
+                            <a class="btn btn-sm btn-primary"
+                               th:href="@{/veiculos/edit/{id}(id=${veiculo.id})}">Editar</a>
+                            <a class="delete btn btn-sm btn-danger"
+                               th:href="@{/veiculos/delete/{id}(id=${veiculo.id})}">Excluir</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-sm btn-success" th:href="@{/veiculos/add}">Adicionar</a>
+    </div>
+</div>
+<div th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>
