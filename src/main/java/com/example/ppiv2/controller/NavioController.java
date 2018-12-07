@@ -31,8 +31,10 @@ public class NavioController {
     @GetMapping
     public ModelAndView findAll() {
 
-        return new ModelAndView("/navios")
-                .addObject("navios", service.findAll());
+        ModelAndView mv = new ModelAndView("/navios");
+        mv.addObject("navios", service.findAll());
+
+        return mv;
     }
 
     @GetMapping("/add")

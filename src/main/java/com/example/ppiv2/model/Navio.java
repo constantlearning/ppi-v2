@@ -16,11 +16,11 @@ public class Navio implements Serializable {
 
     private String nome;
 
-    private Integer quantidadePessoas;
+    private Integer quantidade;
 
-    public Navio(String nome, Integer quantidadePessoas) {
+    public Navio(String nome, Integer quantidade) {
         this.nome = nome;
-        this.quantidadePessoas = quantidadePessoas;
+        this.quantidade = quantidade;
     }
 
     public Navio() {
@@ -42,12 +42,12 @@ public class Navio implements Serializable {
         this.nome = nome;
     }
 
-    public Integer getQuantidadePessoas() {
-        return quantidadePessoas;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadePessoas(Integer quantidadePessoas) {
-        this.quantidadePessoas = quantidadePessoas;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
@@ -57,12 +57,12 @@ public class Navio implements Serializable {
         final Navio navio = (Navio) o;
         return Objects.equals(id, navio.id) &&
                 Objects.equals(nome, navio.nome) &&
-                Objects.equals(quantidadePessoas, navio.quantidadePessoas);
+                Objects.equals(quantidade, navio.quantidade);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, quantidadePessoas);
+        return Objects.hash(id, nome, quantidade);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Navio implements Serializable {
         return "Navio{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", quantidadePessoas=" + quantidadePessoas +
+                ", quantidade=" + quantidade +
                 '}';
     }
 }
