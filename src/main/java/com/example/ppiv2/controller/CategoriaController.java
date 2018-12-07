@@ -6,9 +6,7 @@ import com.example.ppiv2.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -17,41 +15,41 @@ import javax.validation.Valid;
 @RequestMapping(value = "/categorias")
 public class CategoriaController {
 
-    @Autowired
-    private CategoriaService service;
+    private final CategoriaService service;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @Autowired
+    public CategoriaController(CategoriaService service) {
+        this.service = service;
+    }
+
+    @GetMapping
     public ModelAndView findAll() {
 
-        ModelAndView mv = new ModelAndView("/categorias");
-        mv.addObject("categorias", service.findAll());
-
-        return mv;
+        return new ModelAndView("/categorias")
+                .addObject("categorias", service.findAll());
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @GetMapping("/add")
     public ModelAndView add(Categoria categoria) {
 
-        ModelAndView mv = new ModelAndView("/categoria");
-        mv.addObject("categoria", categoria);
-
-        return mv;
+        return new ModelAndView("/categoria")
+                .addObject("categoria", categoria);
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") Long id) {
 
         return add(service.findOne(id));
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable("id") Long id) {
 
         service.delete(id);
         return findAll();
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @PostMapping("/save")
     public ModelAndView save(@Valid Categoria categoria, BindingResult result) {
 
         if (result.hasErrors()) {
