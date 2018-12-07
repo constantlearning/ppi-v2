@@ -49,7 +49,7 @@
                         <div class="col-md-4" th:classappend="${#fields.hasErrors('categoria')}? 'has-error'">
                             <label>Categoria</label>
                             <select th:field="*{categoria.id}" class="form-control input-sm">
-                                <option th:each="categoria : ${categorias}" th:valor="${categoria.id}"
+                                <option th:each="categoria : ${categorias}" th:value="${categoria.id}"
                                         th:text="${categoria.nome}">
                                 </option>
                             </select>

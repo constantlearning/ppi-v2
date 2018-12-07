@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,13 +26,10 @@ public class Locacao implements Serializable {
     @JsonIgnoreProperties("locacoes")
     private List<Avaria> avarias;
 
-    private Date date;
-
-    public Locacao(Veiculo vehicle, Pessoa pessoa, List<Avaria> avarias, Date date) {
+    public Locacao(Veiculo vehicle, Pessoa pessoa, List<Avaria> avarias) {
         this.vehicle = vehicle;
         this.pessoa = pessoa;
         this.avarias = avarias;
-        this.date = date;
     }
 
     public Locacao() {
@@ -72,14 +68,6 @@ public class Locacao implements Serializable {
         this.avarias = avarias;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,13 +76,12 @@ public class Locacao implements Serializable {
         return Objects.equals(id, locacao.id) &&
                 Objects.equals(vehicle, locacao.vehicle) &&
                 Objects.equals(pessoa, locacao.pessoa) &&
-                Objects.equals(avarias, locacao.avarias) &&
-                Objects.equals(date, locacao.date);
+                Objects.equals(avarias, locacao.avarias);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, vehicle, pessoa, avarias, date);
+        return Objects.hash(id, vehicle, pessoa, avarias);
     }
 
     @Override
@@ -104,7 +91,7 @@ public class Locacao implements Serializable {
                 ", vehicle=" + vehicle +
                 ", pessoa=" + pessoa +
                 ", avarias=" + avarias +
-                ", date=" + date +
                 '}';
     }
+
 }
