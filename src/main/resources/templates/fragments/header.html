@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta nome="viewport" content="width=device-width"/>
-    <title>PPI-1 - Thymeleaf</title>
+    <title>PPI V2</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -17,7 +17,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PPI-1 - Thymeleaf</a>
+            <a class="navbar-brand" href="#">PPI - V2</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -31,12 +31,11 @@
 
                 <li>
                     <form th:action="@{/logout}" method="post">
-                        <button style class="btn btn-lg btn-success btn-block" type="submit">Logout</button>
+                        <button style class="btn btn-lg btn-success btn-block" type="submit">Sair</button>
                     </form>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
                 <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
             </ul>
